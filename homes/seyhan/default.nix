@@ -1,7 +1,8 @@
 {pkgs, ...}: let
   username = "seyhan";
 in {
-  imports = [];
+  imports = [./neovim.nix];
+
   config = {
     programs = {
       home-manager.enable = true;
