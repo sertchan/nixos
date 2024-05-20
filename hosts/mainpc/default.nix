@@ -140,7 +140,6 @@
         pulsemixer
         stylua
         taplo
-        qbittorrent
         qbittorrent-nox
         ueberzugpp
         udiskie
