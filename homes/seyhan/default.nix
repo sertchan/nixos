@@ -10,13 +10,6 @@ in {
     home = {
       inherit username;
       homeDirectory = "/home/${username}";
-
-      packages = let
-        stable = [ ];
-        unstable = [ ];
-      in
-        builtins.concatLists [stable unstable];
-
       pointerCursor = {
         package = pkgs.gnome.adwaita-icon-theme;
         name = "Adwaita";
