@@ -197,7 +197,7 @@
 
               function rebuild_system {
                 nixos-rebuild switch --flake ~/.nixos#asli --use-remote-sudo
-                nix-collect-garbage --delete-older-than 7d
+                nix-collect-garbage --delete-older-than 21d
               }
 
               update_flakes
