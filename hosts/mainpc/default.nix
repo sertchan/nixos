@@ -141,6 +141,7 @@
         stylua
         taplo
         qbittorrent
+        qbittorrent-nox
         ueberzugpp
         udiskie
         waifu2x-converter-cpp
@@ -205,6 +206,18 @@
             '';
             Restart = "on-failure";
             RestartSec = 5;
+          };
+        };
+        qbittorrent-nox = {
+          description = "Autostarts Qbittorrent-nox";
+          enable = true;
+          wants = ["network-online.target"];
+          after = ["local-fs.target" "network-online.target" "nss-lookup.target"];
+          wantedBy = ["default.target"];
+          serviceConfig = {
+            ExecStart = "${pkgs-stable.qbittorrent-nox}/bin/qbittorrent-nox";
+            Restart = "on-failure";
+            RestartSec = 30;
           };
         };
         polkit-gnome-authentication-agent-1 = {
