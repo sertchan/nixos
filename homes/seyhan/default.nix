@@ -4,13 +4,18 @@ in {
   imports = [];
   config = {
     programs = {
-      bash.enable = true;
       home-manager.enable = true;
     };
 
     home = {
       inherit username;
       homeDirectory = "/home/${username}";
+
+      packages = let
+        stable = [ ];
+        unstable = [ ];
+      in
+        builtins.concatLists [stable unstable];
 
       pointerCursor = {
         package = pkgs.gnome.adwaita-icon-theme;
@@ -19,11 +24,6 @@ in {
         gtk.enable = true;
         x11.enable = true;
       };
-
-      packages = with pkgs; [
-        atool
-        httpie
-      ];
 
       stateVersion = "24.05";
     };
