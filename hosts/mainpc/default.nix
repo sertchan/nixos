@@ -183,16 +183,16 @@
   systemd = {
     user = {
       services = {
-        flake_autoupgrade = {
-          description = "Autoupgrade flakes (Triggered by flake_autoupgrade.timer)";
+        flake_autoupdate = {
+          description = "Autoupdate flakes (Triggered by flake_autoupdate.timer)";
           enable = true;
           path = with pkgs-stable; [bash coreutils git nix nixos-install-tools];
           serviceConfig = {
             ExecStart = pkgs-stable.writeShellScript "update-flakes" ''
-              function upgrade_flakes {
+              function update_flakes {
                 nix flake update ~/.nixos
                 cd ~/.nixos || exit
-                git add . && git commit -m "Upgrade Flakes $(date +"%d/%m/%Y")" && git push
+                git add . && git commit -m "flake.nix: update flakes" && git push
               }
 
               function rebuild_system {
@@ -200,7 +200,7 @@
                 nix-collect-garbage --delete-older-than 7d
               }
 
-              upgrade_flakes
+              update_flakes
               rebuild_system
             '';
             Restart = "on-failure";
@@ -229,13 +229,13 @@
         };
       };
       timers = {
-        flake_autoupgrade = {
-          description = "Autoupgrade Flakes Weekly";
+        flake_autoupdate = {
+          description = "Autoupdate flakes weekly";
           wantedBy = ["timers.target"];
           timerConfig = {
             OnActiveSec = "7d";
             Persistent = true;
-            Unit = "flake_autoupgrade.service";
+            Unit = "flake_autoupdate.service";
           };
         };
       };
