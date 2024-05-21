@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: let
+  inherit (builtins) concatLists;
   username = "seyhan";
 in {
   imports = [];
@@ -12,12 +17,13 @@ in {
       homeDirectory = "/home/${username}";
 
       packages = let
-        stable = [
+        stable = with pkgs; [
           adwaita-qt
           adwaita-qt6
           gnome.adwaita-icon-theme
         ];
-        unstable = [
+
+        unstable = with pkgs-stable; [
           firefox
           hyprland
           obsidian
@@ -29,7 +35,7 @@ in {
           spotify
         ];
       in
-        builtins.concatLists [stable unstable];
+        concatLists [stable unstable];
 
       pointerCursor = {
         package = pkgs.gnome.adwaita-icon-theme;

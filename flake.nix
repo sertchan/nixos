@@ -16,20 +16,27 @@
     nixpkgs-stable,
     home-manager,
     ...
-  } @ inputs: {
-    nixosConfigurations.asli = nixpkgs.lib.nixosSystem rec {
+  } @ inputs: let
+    pkgs-stable = import nixpkgs-stable {
       system = "x86_64-linux";
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-25.9.0"
+        ];
+      };
+    };
+  in {
+    nixosConfigurations.asli = nixpkgs.lib.nixosSystem {
       modules = [
         home-manager.nixosModules.home-manager
         ./hosts/mainpc/default.nix
         ./homes
       ];
+
       specialArgs = {
         inherit self inputs;
-        pkgs-stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        inherit pkgs-stable;
       };
     };
   };
