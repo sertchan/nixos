@@ -134,11 +134,16 @@
         prettierd
         psmisc
         ranger
+        identity
         rustc
+        neovim
+        gnome.eog
         sassc
+        mpv
         starship
         pulsemixer
         stylua
+        imagemagick
         taplo
         qbittorrent-nox
         ueberzugpp
@@ -152,20 +157,14 @@
 
       unstablePackages = with pkgs; [
         firefox
+        hyprland
         obsidian
         alacritty
         waybar
         swww
         (discord.override {withOpenASAR = true;})
-        hyprland
-        identity
-        imagemagick
-        mpv
-        neovim
-        gnome.eog
         obs-studio
         spotify
-        stirling-pdf
       ];
     in
       stablePackages ++ unstablePackages;
