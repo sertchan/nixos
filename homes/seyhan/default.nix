@@ -37,7 +37,7 @@ in {
 
       iconTheme = {
         name = "Adwaita";
-        package = pkgs.gnome.adwaita-icon-theme;
+        package = pkgs-stable.gnome.adwaita-icon-theme;
       };
 
       font = {
