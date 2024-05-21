@@ -85,9 +85,6 @@
   environment = {
     systemPackages = let
       stablePackages = with pkgs-stable; [
-        adwaita-qt
-        adwaita-qt6
-        gnome.adwaita-icon-theme
         go
         grimblast
         intel-media-driver
@@ -156,15 +153,6 @@
       ];
 
       unstablePackages = with pkgs; [
-        firefox
-        hyprland
-        obsidian
-        alacritty
-        waybar
-        swww
-        (discord.override {withOpenASAR = true;})
-        obs-studio
-        spotify
       ];
     in
       stablePackages ++ unstablePackages;

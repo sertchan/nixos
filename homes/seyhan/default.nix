@@ -10,6 +10,27 @@ in {
     home = {
       inherit username;
       homeDirectory = "/home/${username}";
+
+      packages = let
+        stable = [
+          adwaita-qt
+          adwaita-qt6
+          gnome.adwaita-icon-theme
+        ];
+        unstable = [
+          firefox
+          hyprland
+          obsidian
+          alacritty
+          waybar
+          swww
+          (discord.override {withOpenASAR = true;})
+          obs-studio
+          spotify
+        ];
+      in
+        builtins.concatLists [stable unstable];
+
       pointerCursor = {
         package = pkgs.gnome.adwaita-icon-theme;
         name = "Adwaita";
