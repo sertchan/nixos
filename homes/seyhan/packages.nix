@@ -6,23 +6,9 @@
   inherit (builtins) concatLists;
 in {
   home.packages = let
-    stable = with pkgs; [
+    stable = with pkgs-stable; [
       adwaita-qt
       adwaita-qt6
-      gnome.adwaita-icon-theme
-    ];
-
-    unstable = with pkgs-stable; [
-      firefox
-      hyprland
-      obsidian
-      alacritty
-      waybar
-      swww
-      (discord.override {withOpenASAR = true;})
-      obs-studio
-      spotify
-      grimblast
       nitch
       qalculate-gtk
       unzip
@@ -31,7 +17,6 @@ in {
       wofi
       xdg-utils
       btop
-      alejandra
       bc
       du-dust
       ffmpeg_5-full
@@ -50,7 +35,8 @@ in {
       gnome.eog
       mpv
       imagemagick
-      taplo
+      grimblast
+      neovim
       qbittorrent-nox
       ueberzugpp
       udiskie
@@ -58,6 +44,18 @@ in {
       xdotool
       yamlfix
       zip
+    ];
+
+    unstable = with pkgs; [
+      firefox
+      hyprland
+      obsidian
+      alacritty
+      waybar
+      swww
+      (discord.override {withOpenASAR = true;})
+      obs-studio
+      spotify
     ];
   in
     # Concatenate the lists to create one package list.

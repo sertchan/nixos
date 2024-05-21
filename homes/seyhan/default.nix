@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: let
   username = "seyhan";
 in {
   imports = [./packages.nix];
@@ -14,7 +18,7 @@ in {
       homeDirectory = "/home/${username}";
 
       pointerCursor = {
-        package = pkgs.gnome.adwaita-icon-theme;
+        package = pkgs-stable.gnome.adwaita-icon-theme;
         name = "Adwaita";
         size = 16;
         gtk.enable = true;
