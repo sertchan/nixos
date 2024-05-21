@@ -11,6 +11,19 @@ in {
       home-manager.enable = true;
       git.enable = true;
       starship.enable = true;
+      neovim = {
+        enable = true;
+        extraPackages = with pkgs-stable; [
+          alejandra
+          stylua
+          beautysh
+          taplo
+          rustfmt
+          prettierd
+          yamlfix
+          jq
+        ];
+      };
     };
 
     home = {

@@ -36,7 +36,6 @@ in {
       mpv
       imagemagick
       grimblast
-      neovim
       qbittorrent-nox
       ueberzugpp
       udiskie
