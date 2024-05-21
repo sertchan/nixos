@@ -85,75 +85,15 @@
   environment = {
     systemPackages = let
       stablePackages = with pkgs-stable; [
-        go
-        grimblast
-        intel-media-driver
-        intel-vaapi-driver
-        libvdpau-va-gl
-        linuxHeaders
-        mullvad-vpn
-        nitch
-        nodejs_20
-        pipewire
-        polkit_gnome
-        python3
-        python3Packages.pip
-        qalculate-gtk
-        unzip
-        wireplumber
-        wl-clipboard
-        wl-clip-persist
-        wofi
-        adw-gtk3
-        xdg-utils
-        beautysh
-        black
-        btop
-        alejandra
-        bc
-        cargo
-        deno
-        du-dust
-        eslint_d
-        ffmpeg_5-full
-        gcc
-        bluez
-        bluez-tools
-        gh
-        git
-        gnumake
-        inotify-tools
-        isort
-        jq
-        just
-        p7zip
-        mako
-        prettierd
-        psmisc
-        ranger
-        identity
-        rustc
-        neovim
-        gnome.eog
-        sassc
-        mpv
-        starship
-        pulsemixer
-        stylua
-        imagemagick
-        taplo
-        qbittorrent-nox
-        ueberzugpp
-        udiskie
-        waifu2x-converter-cpp
-        xdotool
-        yamlfix
-        aria2
-        zip
+        curl
+        wget
+        pciutils
+        lshw
+        man-pages
+        rsync
+        bind.dnsutils
       ];
-
-      unstablePackages = with pkgs; [
-      ];
+      unstablePackages = [];
     in
       stablePackages ++ unstablePackages;
 
@@ -266,6 +206,8 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+
+      wireplumber.enable = true;
     };
 
     tlp = {

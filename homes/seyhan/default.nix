@@ -1,41 +1,17 @@
-{
-  pkgs,
-  pkgs-stable,
-  ...
-}: let
-  inherit (builtins) concatLists;
+{pkgs, ...}: let
   username = "seyhan";
 in {
-  imports = [];
+  imports = [./packages.nix];
   config = {
     programs = {
       home-manager.enable = true;
+      git.enable = true;
+      starship.enable = true;
     };
 
     home = {
       inherit username;
       homeDirectory = "/home/${username}";
-
-      packages = let
-        stable = with pkgs; [
-          adwaita-qt
-          adwaita-qt6
-          gnome.adwaita-icon-theme
-        ];
-
-        unstable = with pkgs-stable; [
-          firefox
-          hyprland
-          obsidian
-          alacritty
-          waybar
-          swww
-          (discord.override {withOpenASAR = true;})
-          obs-studio
-          spotify
-        ];
-      in
-        concatLists [stable unstable];
 
       pointerCursor = {
         package = pkgs.gnome.adwaita-icon-theme;
