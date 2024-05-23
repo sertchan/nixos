@@ -30,6 +30,7 @@ in {
         adwaita-qt6
         nitch
         qalculate-gtk
+        libsForQt5.okular
         unzip
         wl-clipboard
         wl-clip-persist
