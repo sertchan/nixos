@@ -132,7 +132,9 @@
   ];
 
   systemd = {
-    targets.wg-quick-wg0.wantedBy = lib.mkForce [];
+    services = {
+      wg-quick-wg0.wantedBy = lib.mkForce [];
+    };
     user = {
       services = {
         flake_autoupdate = {
