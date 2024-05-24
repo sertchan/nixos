@@ -29,6 +29,7 @@ in {
         adwaita-qt
         adwaita-qt6
         nitch
+        wireguard-tools
         qalculate-gtk
         libsForQt5.okular
         unzip
@@ -70,6 +71,7 @@ in {
         obsidian
         alacritty
         waybar
+        swappy
         swww
         (discord.override {withOpenASAR = true;})
         obs-studio

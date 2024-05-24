@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   pkgs-stable,
   ...
@@ -48,6 +49,29 @@
     hostName = "asli";
     nameservers = ["94.140.14.140" "94.140.14.141"];
     networkmanager.enable = true;
+    firewall = {
+      allowedUDPPorts = [51820];
+    };
+    wg-quick.interfaces = let
+      server_ip = "146.70.124.130";
+    in {
+      wg0 = {
+        address = [
+          "10.70.99.206/32"
+          "fc00:bbbb:bbbb:bb01::7:63cd/128"
+        ];
+        listenPort = 51820;
+        privateKeyFile = "/etc/mullvad-vpn.key";
+        peers = [
+          {
+            publicKey = "xpKhRTf9JI269S2PujLbrJm1TwIe67HD5CLe+sP4tUU=";
+            allowedIPs = ["0.0.0.0/0"];
+            endpoint = "${server_ip}:51820";
+            persistentKeepalive = 25;
+          }
+        ];
+      };
+    };
   };
 
   security = {
@@ -108,6 +132,7 @@
   ];
 
   systemd = {
+    targets.wg-quick-wg0.wantedBy = lib.mkForce [];
     user = {
       services = {
         flake_autoupdate = {
