@@ -175,7 +175,7 @@
   ];
 
   systemd = {
-    services = { wg-quick-wg0.wantedBy = lib.mkForce [ ]; };
+    services."wg-quick-wg0".wantedBy = lib.mkForce [ ];
     user = {
       services = {
         qbittorrent-nox = {
@@ -190,6 +190,19 @@
             Restart = "on-failure";
             RestartSec = 30;
           };
+        };
+        gpg-agent = {
+          enable = true;
+          pinentryPackage = pkgs-stable.pinentry-curses;
+          defaultCacheTtl = 1209600;
+          defaultCacheTtlSsh = 1209600;
+          maxCacheTtl = 1209600;
+          maxCacheTtlSsh = 1209600;
+          extraConfig = "allow-preset-passphrase";
+          enableZshIntegration = true;
+          Unit.RefuseManualStart = lib.mkForce false;
+          enableScDaemon = true;
+          enableSshSupport = true;
         };
         polkit-gnome-authentication-agent-1 = {
           description = "Polkit authentication agent for GNOME (graphical)";
