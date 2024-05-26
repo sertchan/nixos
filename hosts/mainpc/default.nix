@@ -109,6 +109,7 @@
       stablePackages = with pkgs-stable; [
         curl
         wget
+        openssl
         pciutils
         lshw
         man-pages
@@ -118,6 +119,10 @@
       unstablePackages = [];
     in
       stablePackages ++ unstablePackages;
+
+    variables = {
+      PKG_CONFIG_PATH = "${pkgs-stable.openssl.dev}/lib/pkgconfig";
+    };
 
     sessionVariables = {
       LIBVA_DRIVER_NAME = "iHD";
