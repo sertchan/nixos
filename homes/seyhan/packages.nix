@@ -51,6 +51,22 @@ in {
         scdaemonSettings = { deny-admin = true; };
       };
     };
+    services = {
+      gpg-agent = {
+        enable = true;
+        pinentryPackage = pkgs-stable.pinentry-curses;
+        defaultCacheTtl = 1209600;
+        defaultCacheTtlSsh = 1209600;
+        maxCacheTtl = 1209600;
+        maxCacheTtlSsh = 1209600;
+        extraConfig = "allow-preset-passphrase";
+        enableZshIntegration = true;
+
+        enableScDaemon = true;
+        enableSshSupport = true;
+      };
+    };
+
     home.packages =
       let
         stable = with pkgs-stable; [

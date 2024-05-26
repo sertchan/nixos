@@ -191,19 +191,6 @@
             RestartSec = 30;
           };
         };
-        gpg-agent = {
-          enable = true;
-          pinentryPackage = pkgs-stable.pinentry-curses;
-          defaultCacheTtl = 1209600;
-          defaultCacheTtlSsh = 1209600;
-          maxCacheTtl = 1209600;
-          maxCacheTtlSsh = 1209600;
-          extraConfig = "allow-preset-passphrase";
-          enableZshIntegration = true;
-          Unit.RefuseManualStart = lib.mkForce false;
-          enableScDaemon = true;
-          enableSshSupport = true;
-        };
         polkit-gnome-authentication-agent-1 = {
           description = "Polkit authentication agent for GNOME (graphical)";
           wantedBy = [ "graphical-session.target" ];
