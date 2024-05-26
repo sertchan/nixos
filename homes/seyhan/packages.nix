@@ -57,7 +57,6 @@ in {
         imagemagick
         grimblast
         qbittorrent-nox
-        ueberzugpp
         udiskie
         waifu2x-converter-cpp
         xdotool
@@ -71,7 +70,7 @@ in {
         obsidian
         alacritty
         waybar
-        swappy
+        ueberzugpp
         swww
         (discord.override {withOpenASAR = true;})
         obs-studio
