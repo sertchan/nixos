@@ -74,8 +74,11 @@
   time.timeZone = "Europe/Istanbul";
 
   nix = {
-    settings.auto-optimise-store = true;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "root" "@wheel" ];
+    };
   };
 
   nixpkgs = {
