@@ -1,13 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  pkgs-stable,
-  ...
-}: {
-  imports = [
-    ./system.nix
-  ];
+{ config, lib, pkgs, pkgs-stable, ... }: {
+  imports = [ ./system.nix ];
 
   boot = {
     loader = {
@@ -42,48 +34,39 @@
   users.users.seyhan = {
     isNormalUser = true;
     shell = pkgs-stable.zsh;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 
   networking = {
     hostName = "asli";
-    nameservers = ["94.140.14.140" "94.140.14.141"];
+    nameservers = [ "94.140.14.140" "94.140.14.141" ];
     networkmanager.enable = true;
-    wg-quick.interfaces = let
-      server_ip = "146.70.124.194";
-    in {
-      wg0 = {
-        address = [
-          "10.66.208.166/32"
-          "fc00:bbbb:bbbb:bb01::3:d0a5/128"
-        ];
-        dns = ["10.64.0.1"];
-        listenPort = 51820;
-        privateKeyFile = "/etc/mullvad-vpn.key";
-        peers = [
-          {
+    wg-quick.interfaces =
+      let server_ip = "146.70.124.194";
+      in {
+        wg0 = {
+          address = [ "10.66.208.166/32" "fc00:bbbb:bbbb:bb01::3:d0a5/128" ];
+          dns = [ "10.64.0.1" ];
+          listenPort = 51820;
+          privateKeyFile = "/etc/mullvad-vpn.key";
+          peers = [{
             publicKey = "Ekc3+qU88FuMfkEMyLlgRqDYv+WHJvUsfOMI/C0ydE4=";
-            allowedIPs = ["0.0.0.0/0" "::0/0"];
+            allowedIPs = [ "0.0.0.0/0" "::0/0" ];
             endpoint = "${server_ip}:51820";
             persistentKeepalive = 25;
-          }
-        ];
+          }];
+        };
       };
-    };
   };
 
   security = {
-    sudo.extraRules = [
-      {
-        users = ["seyhan"];
-        commands = [
-          {
-            command = "ALL";
-            options = ["NOPASSWD"];
-          }
-        ];
-      }
-    ];
+    sudo.extraRules = [{
+      users = [ "seyhan" ];
+      commands = [{
+        command = "ALL";
+        options = [ "NOPASSWD" ];
+      }];
+    }];
     polkit.enable = true;
     rtkit.enable = true;
   };
@@ -92,58 +75,63 @@
 
   nix = {
     settings.auto-optimise-store = true;
-    settings.experimental-features = ["nix-command" "flakes"];
+    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   nixpkgs = {
     config = {
       packageOverrides = pkgs-stable: {
-        intel-vaapi-driver = pkgs-stable.intel-vaapi-driver.override {enableHybridCodec = true;};
+        intel-vaapi-driver =
+          pkgs-stable.intel-vaapi-driver.override { enableHybridCodec = true; };
       };
       allowUnfree = true;
     };
   };
 
   environment = {
-    systemPackages = let
-      stablePackages = with pkgs-stable; [
-        curl
-        wget
-        openssl
-        pciutils
-        lshw
-        man-pages
-        rsync
-        bind.dnsutils
-      ];
-      unstablePackages = [];
-    in
+    systemPackages =
+      let
+        stablePackages = with pkgs-stable; [
+          curl
+          wget
+          openssl
+          pciutils
+          lshw
+          man-pages
+          rsync
+          bind.dnsutils
+        ];
+        unstablePackages = [ ];
+      in
       stablePackages ++ unstablePackages;
 
     variables = {
       PKG_CONFIG_PATH = "${pkgs-stable.openssl.dev}/lib/pkgconfig";
     };
 
-    sessionVariables = {
-      LIBVA_DRIVER_NAME = "iHD";
-    };
+    sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
   };
 
   fonts.packages = with pkgs-stable; [
     noto-fonts-cjk
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   systemd = {
-    services = {
-      wg-quick-wg0.wantedBy = lib.mkForce [];
-    };
+    services = { wg-quick-wg0.wantedBy = lib.mkForce [ ]; };
     user = {
       services = {
         flake_autoupdate = {
-          description = "Autoupdate flakes (Triggered by flake_autoupdate.timer)";
+          description =
+            "Autoupdate flakes (Triggered by flake_autoupdate.timer)";
           enable = true;
-          path = with pkgs-stable; [bash coreutils git nix nixos-install-tools];
+          path = with pkgs-stable; [
+            bash
+            coreutils
+            git
+            nix
+            nixos-install-tools
+          ];
           serviceConfig = {
             ExecStart = pkgs-stable.writeShellScript "update-flakes" ''
               function update_flakes {
@@ -167,9 +155,10 @@
         qbittorrent-nox = {
           description = "Autostarts Qbittorrent-nox";
           enable = true;
-          wants = ["network-online.target"];
-          after = ["local-fs.target" "network-online.target" "nss-lookup.target"];
-          wantedBy = ["default.target"];
+          wants = [ "network-online.target" ];
+          after =
+            [ "local-fs.target" "network-online.target" "nss-lookup.target" ];
+          wantedBy = [ "default.target" ];
           serviceConfig = {
             ExecStart = "${pkgs-stable.qbittorrent-nox}/bin/qbittorrent-nox";
             Restart = "on-failure";
@@ -178,11 +167,12 @@
         };
         polkit-gnome-authentication-agent-1 = {
           description = "Polkit authentication agent for GNOME (graphical)";
-          wantedBy = ["graphical-session.target"];
-          after = ["graphical-session.target"];
+          wantedBy = [ "graphical-session.target" ];
+          after = [ "graphical-session.target" ];
           serviceConfig = {
             Type = "simple";
-            ExecStart = "${pkgs-stable.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+            ExecStart =
+              "${pkgs-stable.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
             Restart = "on-failure";
             RestartSec = 1;
             TimeoutStopSec = 10;
@@ -190,8 +180,8 @@
         };
         mpris-proxy = {
           description = "MPRIS Proxy for Bluetooth devices";
-          after = ["network.target" "sound.target"];
-          wantedBy = ["default.target"];
+          after = [ "network.target" "sound.target" ];
+          wantedBy = [ "default.target" ];
           serviceConfig = {
             ExecStart = "${pkgs-stable.bluez}/bin/mpris-proxy";
           };
@@ -200,7 +190,7 @@
       timers = {
         flake_autoupdate = {
           description = "Autoupdate flakes weekly";
-          wantedBy = ["timers.target"];
+          wantedBy = [ "timers.target" ];
           timerConfig = {
             OnActiveSec = "7d";
             Persistent = true;
@@ -226,8 +216,8 @@
     resolved = {
       enable = true;
       dnssec = "true";
-      domains = ["~."];
-      fallbackDns = ["94.140.14.140" "94.140.14.141"];
+      domains = [ "~." ];
+      fallbackDns = [ "94.140.14.140" "94.140.14.141" ];
       dnsovertls = "true";
     };
 

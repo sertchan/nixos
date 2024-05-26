@@ -1,11 +1,7 @@
-{
-  pkgs,
-  pkgs-stable,
-  ...
-}: let
-  username = "seyhan";
+{ pkgs, pkgs-stable, ... }:
+let username = "seyhan";
 in {
-  imports = [./packages.nix];
+  imports = [ ./packages.nix ];
   config = {
     home = {
       inherit username;
