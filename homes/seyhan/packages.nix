@@ -21,6 +21,7 @@ in {
           prettierd
           yamlfix
           jq
+          gcc
         ];
       };
     };
