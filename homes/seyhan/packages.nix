@@ -24,7 +24,7 @@ in {
       };
       gpg = {
         enable = true;
-        homedir = "home/seyhan/gnupg";
+        homedir = "/home/seyhan/gnupg";
         settings = {
           keyserver = "hkps://keys.openpgp.org";
           personal-cipher-preferences = "AES256 AES192 AES";
@@ -60,7 +60,6 @@ in {
           wireguard-tools
           qalculate-gtk
           libsForQt5.okular
-          pinentry-curses
           unzip
           wl-clipboard
           wl-clip-persist
