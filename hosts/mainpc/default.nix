@@ -20,12 +20,22 @@
     };
     bluetooth = {
       enable = true;
+      package = pkgs.bluez5-experimental;
       powerOnBoot = true;
+      disabledPlugins = [ "sap" ];
+
       settings = {
         General = {
-          Enable = "Source,Sink,Media,Socket";
+          JustWorksRepairing = "always";
+          MultiProfile = "multiple";
           Experimental = true;
         };
+
+        Headset = {
+          AutoConnect = true;
+          ReconnectAttempts = 5;
+        };
+        Audio = { A2dpSink = "SBC Bitpool=53"; };
       };
     };
   };
@@ -231,7 +241,7 @@
 
   services = {
     gvfs.enable = true;
-    mullvad-vpn.enable = true;
+    blueman.enable = true;
 
     resolved = {
       enable = true;
