@@ -1,11 +1,9 @@
-{pkgs-stable, ...}: {
+{ pkgs, ... }: {
   home-manager = {
     verbose = true;
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit pkgs-stable;};
-    users = {
-      "seyhan" = ./seyhan;
-    };
+    extraSpecialArgs = { inherit pkgs; };
+    users = { "seyhan" = ./seyhan; };
   };
 }

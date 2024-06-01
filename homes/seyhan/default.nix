@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, ... }:
 let username = "seyhan";
 in {
   imports = [ ./packages.nix ];
@@ -8,7 +8,7 @@ in {
       homeDirectory = "/home/${username}";
 
       pointerCursor = {
-        package = pkgs-stable.gnome.adwaita-icon-theme;
+        package = pkgs.gnome.adwaita-icon-theme;
         name = "Adwaita";
         size = 16;
         gtk.enable = true;
@@ -22,12 +22,12 @@ in {
       enable = true;
       theme = {
         name = "adw-gtk3-dark";
-        package = pkgs-stable.adw-gtk3;
+        package = pkgs.adw-gtk3;
       };
 
       iconTheme = {
         name = "Adwaita";
-        package = pkgs-stable.gnome.adwaita-icon-theme;
+        package = pkgs.gnome.adwaita-icon-theme;
       };
 
       font = {

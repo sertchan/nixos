@@ -3,21 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      pkgs-stable = import nixpkgs-stable {
+      pkgs = import nixpkgs {
         system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-          permittedInsecurePackages = [ "electron-25.9.0" ];
-        };
+        config = { allowUnfree = true; };
       };
     in
     {
@@ -27,11 +23,7 @@
           ./hosts/mainpc/default.nix
           ./homes
         ];
-
-        specialArgs = {
-          inherit self inputs;
-          inherit pkgs-stable;
-        };
+        specialArgs = { inherit self inputs; };
       };
     };
 }

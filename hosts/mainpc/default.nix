@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-stable, ... }: {
+{ config, lib, pkgs, ... }: {
   imports = [ ./system.nix ];
 
   boot = {
@@ -12,7 +12,7 @@
   hardware = {
     opengl = {
       enable = true;
-      extraPackages = with pkgs-stable; [
+      extraPackages = with pkgs; [
         intel-media-driver
         intel-vaapi-driver
         libvdpau-va-gl
@@ -40,10 +40,10 @@
     };
   };
 
-  users.defaultUserShell = pkgs-stable.zsh;
+  users.defaultUserShell = pkgs.zsh;
   users.users.seyhan = {
     isNormalUser = true;
-    shell = pkgs-stable.zsh;
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" "networkmanager" ];
   };
 
@@ -147,39 +147,30 @@
 
   nixpkgs = {
     config = {
-      packageOverrides = pkgs-stable: {
+      packageOverrides = pkgs: {
         intel-vaapi-driver =
-          pkgs-stable.intel-vaapi-driver.override { enableHybridCodec = true; };
+          pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
       };
       allowUnfree = true;
     };
   };
 
   environment = {
-    systemPackages =
-      let
-        stablePackages = with pkgs-stable; [
-          curl
-          wget
-          openssl
-          pciutils
-          lshw
-          man-pages
-          rsync
-          bind.dnsutils
-        ];
-        unstablePackages = [ ];
-      in
-      stablePackages ++ unstablePackages;
-
-    variables = {
-      PKG_CONFIG_PATH = "${pkgs-stable.openssl.dev}/lib/pkgconfig";
-    };
-
+    systemPackages = with pkgs; [
+      curl
+      wget
+      openssl
+      pciutils
+      lshw
+      man-pages
+      rsync
+      bind.dnsutils
+    ];
+    variables = { PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig"; };
     sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
   };
 
-  fonts.packages = with pkgs-stable; [
+  fonts.packages = with pkgs; [
     noto-fonts-cjk
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
@@ -196,7 +187,7 @@
             [ "local-fs.target" "network-online.target" "nss-lookup.target" ];
           wantedBy = [ "default.target" ];
           serviceConfig = {
-            ExecStart = "${pkgs-stable.qbittorrent-nox}/bin/qbittorrent-nox";
+            ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
             Restart = "on-failure";
             RestartSec = 30;
           };
@@ -208,7 +199,7 @@
           serviceConfig = {
             Type = "simple";
             ExecStart =
-              "${pkgs-stable.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+              "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
             Restart = "on-failure";
             RestartSec = 1;
             TimeoutStopSec = 10;
@@ -218,9 +209,7 @@
           description = "MPRIS Proxy for Bluetooth devices";
           after = [ "network.target" "sound.target" ];
           wantedBy = [ "default.target" ];
-          serviceConfig = {
-            ExecStart = "${pkgs-stable.bluez}/bin/mpris-proxy";
-          };
+          serviceConfig = { ExecStart = "${pkgs.bluez}/bin/mpris-proxy"; };
         };
       };
     };
