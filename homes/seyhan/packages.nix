@@ -33,7 +33,6 @@ in {
       nitch
       wireguard-tools
       qalculate-gtk
-      libsForQt5.okular
       unzip
       wl-clipboard
       wl-clip-persist
@@ -71,6 +70,7 @@ in {
       waybar
       ueberzugpp
       swww
+      pulsemixer
       prismlauncher
       (discord.override { withOpenASAR = true; })
       obs-studio
