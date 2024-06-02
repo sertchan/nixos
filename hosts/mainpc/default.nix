@@ -6,7 +6,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_xanmod_stable;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 
   hardware = {
@@ -181,7 +181,7 @@
       services = {
         qbittorrent-nox = {
           description = "Autostarts Qbittorrent-nox";
-          enable = true;
+          enable = false;
           wants = [ "network-online.target" ];
           after =
             [ "local-fs.target" "network-online.target" "nss-lookup.target" ];
