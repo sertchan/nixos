@@ -11,6 +11,7 @@
   };
 
   hardware = {
+    wirelessRegulatoryDatabase = true;
     opengl = {
       enable = true;
       extraPackages = with pkgs; [
@@ -50,6 +51,7 @@
 
   networking = {
     hostName = "asli";
+    usePredictableInterfaceNames = true;
     nameservers = [ "94.140.14.140" "94.140.14.141" ];
     networkmanager.enable = true;
     wg-quick.interfaces = let server_ip = "146.70.124.194";
@@ -159,14 +161,15 @@
     systemPackages = with pkgs; [
       curl
       wget
-      openssl
       pciutils
       lshw
       man-pages
       rsync
       bind.dnsutils
+      traceroute
+      tcpdump
+      mtr
     ];
-    variables = { PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig"; };
     sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
   };
 
@@ -176,12 +179,16 @@
   ];
 
   systemd = {
-    services = { "wg-quick-wg0".wantedBy = lib.mkForce [ ]; };
+    services = {
+      systemd-networkd.stopIfChanged = false;
+      systemd-resolved.stopIfChanged = false;
+      wg-quick-wg0.enable = false;
+    };
     user = {
       services = {
         qbittorrent-nox = {
-          description = "Autostarts Qbittorrent-nox";
           enable = false;
+          description = "Autostarts Qbittorrent-nox";
           wants = [ "network-online.target" ];
           after =
             [ "local-fs.target" "network-online.target" "nss-lookup.target" ];
@@ -193,6 +200,7 @@
           };
         };
         polkit-gnome-authentication-agent-1 = {
+          enable = true;
           description = "Polkit authentication agent for GNOME (graphical)";
           wantedBy = [ "graphical-session.target" ];
           after = [ "graphical-session.target" ];
@@ -206,6 +214,7 @@
           };
         };
         mpris-proxy = {
+          enable = true;
           description = "MPRIS Proxy for Bluetooth devices";
           after = [ "network.target" "sound.target" ];
           wantedBy = [ "default.target" ];
@@ -247,7 +256,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-
       wireplumber.enable = true;
     };
 
@@ -256,7 +264,6 @@
       settings = {
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
         CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
         CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
       };

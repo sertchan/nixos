@@ -1,6 +1,5 @@
 {
   description = "seyhan";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
@@ -15,8 +14,7 @@
         system = "x86_64-linux";
         config = { allowUnfree = true; };
       };
-    in
-    {
+    in {
       nixosConfigurations.asli = nixpkgs.lib.nixosSystem {
         modules = [
           home-manager.nixosModules.home-manager
