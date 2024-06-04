@@ -52,22 +52,21 @@
     hostName = "asli";
     nameservers = [ "94.140.14.140" "94.140.14.141" ];
     networkmanager.enable = true;
-    wg-quick.interfaces =
-      let server_ip = "146.70.124.194";
-      in {
-        wg0 = {
-          address = [ "10.66.208.166/32" "fc00:bbbb:bbbb:bb01::3:d0a5/128" ];
-          dns = [ "10.64.0.1" ];
-          listenPort = 51820;
-          privateKeyFile = "/etc/mullvad-vpn.key";
-          peers = [{
-            publicKey = "Ekc3+qU88FuMfkEMyLlgRqDYv+WHJvUsfOMI/C0ydE4=";
-            allowedIPs = [ "0.0.0.0/0" "::0/0" ];
-            endpoint = "${server_ip}:51820";
-            persistentKeepalive = 25;
-          }];
-        };
+    wg-quick.interfaces = let server_ip = "146.70.124.194";
+    in {
+      wg0 = {
+        address = [ "10.66.208.166/32" "fc00:bbbb:bbbb:bb01::3:d0a5/128" ];
+        dns = [ "10.64.0.1" ];
+        listenPort = 51820;
+        privateKeyFile = "/etc/mullvad-vpn.key";
+        peers = [{
+          publicKey = "Ekc3+qU88FuMfkEMyLlgRqDYv+WHJvUsfOMI/C0ydE4=";
+          allowedIPs = [ "0.0.0.0/0" "::0/0" ];
+          endpoint = "${server_ip}:51820";
+          persistentKeepalive = 25;
+        }];
       };
+    };
   };
 
   security = {
