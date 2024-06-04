@@ -5,8 +5,9 @@
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+      timeout = 0;
     };
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   hardware = {
@@ -176,7 +177,7 @@
   ];
 
   systemd = {
-    services."wg-quick-wg0".wantedBy = lib.mkForce [ ];
+    services = { "wg-quick-wg0".wantedBy = lib.mkForce [ ]; };
     user = {
       services = {
         qbittorrent-nox = {
@@ -223,6 +224,8 @@
     zsh.enable = true;
     nh = {
       enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
       package = pkgs.nh;
       flake = "/home/seyhan/.nixos";
     };

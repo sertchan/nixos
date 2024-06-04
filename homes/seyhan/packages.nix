@@ -23,9 +23,6 @@ in {
         ];
       };
     };
-    services = {
-      #template
-    };
 
     home.packages = with pkgs; [
       adwaita-qt
