@@ -5,6 +5,7 @@ in {
     programs = {
       home-manager.enable = true;
       git.enable = true;
+      vscode.enable = true;
       starship.enable = true;
       neovim = {
         enable = true;
@@ -56,6 +57,8 @@ in {
       grimblast
       qbittorrent-nox
       udiskie
+      nixfmt
+      nixpkgs-fmt
       waifu2x-converter-cpp
       xdotool
       yamlfix
