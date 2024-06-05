@@ -162,6 +162,7 @@
       rsync
       bind.dnsutils
       traceroute
+      wireguard-tools
       tcpdump
       mtr
     ];
