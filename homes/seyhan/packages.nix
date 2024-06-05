@@ -5,6 +5,7 @@ in {
     programs = {
       home-manager.enable = true;
       git.enable = true;
+      firefox.enable = true;
       vscode.enable = true;
       starship.enable = true;
       neovim = {
@@ -29,7 +30,6 @@ in {
       adwaita-qt
       adwaita-qt6
       nitch
-      wireguard-tools
       qalculate-gtk
       unzip
       wl-clipboard
@@ -39,7 +39,8 @@ in {
       btop
       bc
       du-dust
-      ffmpeg_5-full
+      ffmpeg_7-full
+      ffmpegthumbnailer
       bluez
       bluez-tools
       inotify-tools
@@ -50,6 +51,7 @@ in {
       mako
       psmisc
       ranger
+      xdragon
       identity
       gnome.eog
       mpv
@@ -63,7 +65,7 @@ in {
       xdotool
       yamlfix
       zip
-      firefox
+      brave
       hyprland
       obsidian
       alacritty
