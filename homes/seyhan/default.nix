@@ -31,7 +31,7 @@ in {
       };
 
       font = {
-        name = "Segoe UI Medium";
+        name = "Segoe UI Regular";
         size = 10;
       };
 
