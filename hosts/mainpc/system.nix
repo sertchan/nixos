@@ -31,20 +31,20 @@
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=1024M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=512M" ];
     };
     "/home/seyhan/.config/BraveSoftware/Brave-Browser/Default/Service Worker/CacheStorage" =
       {
         device = "tmpfs";
         fsType = "tmpfs";
         noCheck = true;
-        options = [ "noatime" "nodev" "nosuid" "size=128M" ];
+        options = [ "noatime" "nodev" "nosuid" "size=64M" ];
       };
     "/home/seyhan/.config/discord/Cache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=64M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
     };
     "/home/seyhan/.config/discord/Code Cache" = {
       device = "tmpfs";
@@ -56,13 +56,13 @@
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=64M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
     };
     "/home/seyhan/.config/Code/CachedData" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=64M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
     "/home/seyhan/.config/obsidian/Cache" = {
       device = "tmpfs";
@@ -74,19 +74,19 @@
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=8M" ];
     };
     "/home/seyhan/.config/obsidian/DawnCache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=8M" ];
     };
     "/home/seyhan/.config/obsidian/GPUCache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=8M" ];
     };
   };
 
