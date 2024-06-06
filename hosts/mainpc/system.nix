@@ -33,6 +33,37 @@
       noCheck = true;
       options = [ "noatime" "nodev" "nosuid" "size=128M" ];
     };
+    "/home/seyhan/.config/BraveSoftware/Brave-Browser/Default/Service Worker/CacheStorage" =
+      {
+        device = "tmpfs";
+        fsType = "tmpfs";
+        noCheck = true;
+        options = [ "noatime" "nodev" "nosuid" "size=128M" ];
+      };
+    "/home/seyhan/.config/discord/Cache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=64M" ];
+    };
+    "/home/seyhan/.config/discord/Code Cache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+    };
+    "/home/seyhan/.config/Code/Cache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=64M" ];
+    };
+    "/home/seyhan/.config/Code/CachedData" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=64M" ];
+    };
     "/home/seyhan/.cache/mozilla/firefox" = {
       device = "tmpfs";
       fsType = "tmpfs";
