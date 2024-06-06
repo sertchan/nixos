@@ -7,7 +7,7 @@
       efi.canTouchEfiVariables = true;
       timeout = 0;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 
   hardware = {
