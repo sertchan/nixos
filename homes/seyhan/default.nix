@@ -49,7 +49,6 @@ in {
         gtk-xft-rgba = "rgb";
         gtk-error-bell = 0;
         gtk-enable-primary-paste = false;
-        gtk-application-prefer-dark-theme = true;
       };
 
       gtk4.extraConfig = {
@@ -62,7 +61,6 @@ in {
         gtk-xft-rgba = "rgb";
         gtk-enable-primary-paste = false;
         gtk-error-bell = 0;
-        gtk-application-prefer-dark-theme = true;
       };
     };
   };

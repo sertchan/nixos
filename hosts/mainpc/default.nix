@@ -7,6 +7,7 @@
       efi.canTouchEfiVariables = true;
       timeout = 0;
     };
+    tmp.useTmpfs = true;
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
