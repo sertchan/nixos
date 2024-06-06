@@ -38,13 +38,13 @@
         device = "tmpfs";
         fsType = "tmpfs";
         noCheck = true;
-        options = [ "noatime" "nodev" "nosuid" "size=64M" ];
+        options = [ "noatime" "nodev" "nosuid" "size=256M" ];
       };
     "/home/seyhan/.config/discord/Cache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=128M" ];
     };
     "/home/seyhan/.config/discord/Code Cache" = {
       device = "tmpfs";
@@ -52,13 +52,55 @@
       noCheck = true;
       options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
+    "/home/seyhan/.config/discord/DawnCache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+    };
+    "/home/seyhan/.config/discord/GPUCache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+    };
+    "/home/seyhan/.config/Code/CachedData" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=128M" ];
+    };
     "/home/seyhan/.config/Code/Cache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=64M" ];
     };
-    "/home/seyhan/.config/Code/CachedData" = {
+    "/home/seyhan/.config/Code/CachedExtensionVSIXs" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+    };
+    "/home/seyhan/.config/Code/CachedProfilesData" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+    };
+    "/home/seyhan/.config/Code/Code Cache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+    };
+    "/home/seyhan/.config/Code/DawnCache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
+    };
+    "/home/seyhan/.config/Code/GPUCache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
@@ -74,19 +116,19 @@
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=8M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
     "/home/seyhan/.config/obsidian/DawnCache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=8M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
     "/home/seyhan/.config/obsidian/GPUCache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=8M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
   };
 
