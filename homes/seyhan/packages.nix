@@ -66,7 +66,6 @@ in {
       yamlfix
       zip
       brave
-      hyprland
       obsidian
       alacritty
       waybar
@@ -74,7 +73,10 @@ in {
       swww
       pulsemixer
       prismlauncher
-      (discord.override { withOpenASAR = true; })
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      })
       obs-studio
       spotify
     ];
