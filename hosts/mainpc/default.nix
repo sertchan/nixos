@@ -220,7 +220,6 @@
     };
   };
 
-  xdg.portal.wlr.enable = true;
   sound.enable = true;
 
   programs = {
