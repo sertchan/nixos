@@ -27,11 +27,11 @@
       device = "/dev/disk/by-uuid/434E-81A8";
       fsType = "vfat";
     };
-    "/home/seyhan/.cache/BraveSoftware" = {
+    "/home/seyhan/.cache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=128M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=1024M" ];
     };
     "/home/seyhan/.config/BraveSoftware/Brave-Browser/Default/Service Worker/CacheStorage" =
       {
@@ -63,42 +63,6 @@
       fsType = "tmpfs";
       noCheck = true;
       options = [ "noatime" "nodev" "nosuid" "size=64M" ];
-    };
-    "/home/seyhan/.cache/mozilla/firefox" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=128M" ];
-    };
-    "/home/seyhan/.cache/spotify" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=128M" ];
-    };
-    "/home/seyhan/.cache/mesa_shader_cache" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
-    };
-    "/home/seyhan/.cache/ranger" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
-    };
-    "/home/seyhan/.cache/thumbnails" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
-    };
-    "/home/seyhan/.cache/ueberzugpp" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
     "/home/seyhan/.config/obsidian/Cache" = {
       device = "tmpfs";
