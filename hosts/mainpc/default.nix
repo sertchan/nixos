@@ -226,16 +226,12 @@
   sound.enable = true;
 
   programs = {
+    hyprland.enable = true;
     zsh = {
       enable = true;
       ohMyZsh.enable = true;
       histSize = 10000;
       autosuggestions.enable = true;
-    };
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-      package = pkgs.hyprland;
     };
     nh = {
       enable = true;
