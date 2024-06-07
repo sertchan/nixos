@@ -159,6 +159,9 @@
       pciutils
       lshw
       man-pages
+      dmidecode
+      sysstat
+      smartmontools
       rsync
       bind.dnsutils
       traceroute
