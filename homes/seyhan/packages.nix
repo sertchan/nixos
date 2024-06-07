@@ -73,10 +73,7 @@ in {
       swww
       pulsemixer
       prismlauncher
-      (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-      })
+      webcord-vencord
       obs-studio
       spotify
     ];
