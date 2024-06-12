@@ -65,7 +65,7 @@ in {
       xdotool
       yamlfix
       zip
-      brave
+      google-chrome
       obsidian
       alacritty
       waybar
