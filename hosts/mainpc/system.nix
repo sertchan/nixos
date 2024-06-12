@@ -35,13 +35,24 @@
       noCheck = true;
       options = [ "noatime" "nodev" "nosuid" "size=2048M" ];
     };
-    "/home/seyhan/.config/BraveSoftware/Brave-Browser/Default/Service Worker/CacheStorage" =
-      {
-        device = "tmpfs";
-        fsType = "tmpfs";
-        noCheck = true;
-        options = [ "noatime" "nodev" "nosuid" "size=512M" ];
-      };
+    "/home/seyhan/.config/google-chrome/Default/Service Worker/CacheStorage" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=512M" ];
+    };
+    "/home/seyhan/.config/google-chrome/Default/Service Worker/ScriptCache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=128M" ];
+    };
+    "/home/seyhan/.config/google-chrome/Default/GPUCache" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
+    };
     "/home/seyhan/.config/discord/Cache" = {
       device = "tmpfs";
       fsType = "tmpfs";
