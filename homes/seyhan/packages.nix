@@ -39,7 +39,6 @@ in {
       btop
       bc
       du-dust
-      ffmpeg_7-full
       ffmpegthumbnailer
       bluez
       bluez-tools
