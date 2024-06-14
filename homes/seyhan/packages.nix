@@ -6,6 +6,7 @@ in {
       home-manager.enable = true;
       git.enable = true;
       firefox.enable = true;
+      obs-studio.enable = true;
       vscode.enable = true;
       starship.enable = true;
       neovim = {
@@ -69,7 +70,6 @@ in {
       swww
       pulsemixer
       prismlauncher
-      obs-studio
       spotify
     ];
   };
