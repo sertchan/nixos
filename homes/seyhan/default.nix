@@ -6,7 +6,6 @@ in {
     home = {
       inherit username;
       homeDirectory = "/home/${username}";
-
       pointerCursor = {
         package = pkgs.gnome.adwaita-icon-theme;
         name = "Adwaita";
@@ -17,6 +16,8 @@ in {
 
       stateVersion = "24.05";
     };
+
+    qt.style.name = "adwaita-dark";
 
     gtk = {
       enable = true;

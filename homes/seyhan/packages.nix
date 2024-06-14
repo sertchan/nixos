@@ -30,6 +30,7 @@ in {
       adwaita-qt
       adwaita-qt6
       nitch
+      nixfmt
       qalculate-gtk
       unzip
       wl-clipboard
@@ -58,8 +59,6 @@ in {
       grimblast
       qbittorrent-nox
       udiskie
-      nixfmt
-      nixpkgs-fmt
       waifu2x-converter-cpp
       xdotool
       yamlfix
@@ -72,7 +71,6 @@ in {
       swww
       pulsemixer
       prismlauncher
-      webcord-vencord
       obs-studio
       spotify
     ];
