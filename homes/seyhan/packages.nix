@@ -27,8 +27,6 @@ in {
     };
 
     home.packages = with pkgs; [
-      adwaita-qt
-      adwaita-qt6
       nitch
       nixfmt
       qalculate-gtk

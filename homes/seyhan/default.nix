@@ -17,7 +17,11 @@ in {
       stateVersion = "24.05";
     };
 
-    qt.style.name = "adwaita-dark";
+    qt = {
+      enable = true;
+      style.name = "adwaita-dark";
+      style.package = pkgs.adwaita-qt;
+    };
 
     gtk = {
       enable = true;
