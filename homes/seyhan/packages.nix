@@ -69,7 +69,6 @@ in {
       ueberzugpp
       swww
       pulsemixer
-      prismlauncher
       spotify
     ];
   };
