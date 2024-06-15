@@ -244,8 +244,6 @@
 
   services = {
     gvfs.enable = true;
-    blueman.enable = true;
-
     resolved = {
       enable = true;
       dnssec = "true";
@@ -253,7 +251,6 @@
       fallbackDns = [ "94.140.14.140" "94.140.14.141" ];
       dnsovertls = "true";
     };
-
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -261,7 +258,6 @@
       pulse.enable = true;
       wireplumber.enable = true;
     };
-
     tlp = {
       enable = true;
       settings = {
