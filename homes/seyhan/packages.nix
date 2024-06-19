@@ -29,7 +29,6 @@ in {
 
     home.packages = with pkgs; [
       nitch
-      nixfmt
       qalculate-gtk
       unzip
       wl-clipboard
@@ -70,6 +69,16 @@ in {
       swww
       pulsemixer
       spotify
+
+      #shouldn't be here
+      gnumake42
+      nodejs_20
+      bun
+      pm2
+      nodePackages_latest.node-gyp
+      python3
+      nixfmt
+      gcc
     ];
   };
 }
