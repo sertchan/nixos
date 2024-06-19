@@ -34,6 +34,7 @@ in {
       unzip
       wl-clipboard
       wl-clip-persist
+      webcord
       wofi
       xdg-utils
       btop

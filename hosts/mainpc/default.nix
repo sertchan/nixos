@@ -169,7 +169,7 @@
     user = {
       services = {
         qbittorrent-nox = {
-          enable = false;
+          enable = true;
           description = "Autostarts Qbittorrent-nox";
           wants = [ "network-online.target" ];
           after =
