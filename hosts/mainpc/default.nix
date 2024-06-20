@@ -181,6 +181,27 @@
             RestartSec = 30;
           };
         };
+        valiant-room-service = {
+          enable = true;
+          path = with pkgs; [ bash bun ];
+          description = "Autostarts Valiant Dicord Bot";
+          wants = [ "network-online.target" ];
+          after =
+            [ "local-fs.target" "network-online.target" "nss-lookup.target" ];
+          wantedBy = [ "default.target" ];
+          serviceConfig = {
+            ExecStart = pkgs.writeShellScript "run-bot" ''
+              function run_bot {
+                cd ~/Downloads/shrouded-wary-arrhinceratops || exit
+                bun src/index.ts
+              }
+
+              run_bot
+            '';
+            Restart = "on-failure";
+            RestartSec = 30;
+          };
+        };
         polkit-gnome-authentication-agent-1 = {
           enable = true;
           description = "Polkit authentication agent for GNOME (graphical)";

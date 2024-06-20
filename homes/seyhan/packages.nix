@@ -74,7 +74,6 @@ in {
       gnumake42
       nodejs_20
       bun
-      pm2
       nodePackages_latest.node-gyp
       python3
       nixfmt
