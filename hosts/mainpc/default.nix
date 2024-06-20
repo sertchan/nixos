@@ -170,7 +170,7 @@
       services = {
         qbittorrent-nox = {
           enable = true;
-          description = "Autostarts Qbittorrent-nox";
+          description = "Qbittorrent-nox";
           wants = [ "network-online.target" ];
           after =
             [ "local-fs.target" "network-online.target" "nss-lookup.target" ];
@@ -184,7 +184,7 @@
         valiant-room-service = {
           enable = true;
           path = with pkgs; [ bash bun ];
-          description = "Autostarts Valiant Dicord Bot";
+          description = "Valiant Dicord Bot";
           wants = [ "network-online.target" ];
           after =
             [ "local-fs.target" "network-online.target" "nss-lookup.target" ];
