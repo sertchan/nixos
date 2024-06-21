@@ -33,31 +33,37 @@
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=2048M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=1024M" ];
+    };
+    "/home/seyhan/Pictures/Screenshots" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      noCheck = true;
+      options = [ "noatime" "nodev" "nosuid" "size=128M" ];
     };
     "/home/seyhan/.config/obsidian/Cache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
     "/home/seyhan/.config/obsidian/Code Cache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
     "/home/seyhan/.config/obsidian/DawnCache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
     "/home/seyhan/.config/obsidian/GPUCache" = {
       device = "tmpfs";
       fsType = "tmpfs";
       noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=32M" ];
+      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
     };
   };
 
