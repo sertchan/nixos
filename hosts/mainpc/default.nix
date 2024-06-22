@@ -52,7 +52,7 @@
   networking = {
     hostName = "asli";
     usePredictableInterfaceNames = true;
-    nameservers = [ "94.140.14.140" "94.140.14.141" ];
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager.enable = true;
   };
 
@@ -252,7 +252,7 @@
       enable = true;
       dnssec = "true";
       domains = [ "~." ];
-      fallbackDns = [ "94.140.14.140" "94.140.14.141" ];
+      fallbackDns = [ "1.1.1.1" "1.0.0.1" ];
       dnsovertls = "true";
     };
     pipewire = {
