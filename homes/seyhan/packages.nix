@@ -33,7 +33,6 @@ in {
       unzip
       wl-clipboard
       wl-clip-persist
-      webcord
       wofi
       xdg-utils
       btop
@@ -70,7 +69,7 @@ in {
       pulsemixer
       spotify
 
-      #shouldn't be here
+      #should be done with devshell
       gnumake42
       nodejs_20
       bun
