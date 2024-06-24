@@ -44,6 +44,8 @@ in {
       inotify-tools
       isort
       jq
+      ffsubsync
+      ffmpeg_7-full
       just
       p7zip
       mako
