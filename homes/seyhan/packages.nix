@@ -31,8 +31,7 @@ in {
       nitch
       qalculate-gtk
       unzip
-      wl-clipboard
-      wl-clip-persist
+      cliphist
       wofi
       xdg-utils
       btop
