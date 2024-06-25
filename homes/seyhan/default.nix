@@ -50,7 +50,7 @@ in {
         gtk-enable-input-feedback-sounds = 0;
         gtk-xft-antialias = 1;
         gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
+        gtk-xft-hintstyle = "hintmedium";
         gtk-xft-rgba = "rgb";
         gtk-error-bell = 0;
         gtk-enable-primary-paste = false;
@@ -62,7 +62,7 @@ in {
         gtk-enable-input-feedback-sounds = 0;
         gtk-xft-antialias = 1;
         gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
+        gtk-xft-hintstyle = "hintmedium";
         gtk-xft-rgba = "rgb";
         gtk-enable-primary-paste = false;
         gtk-error-bell = 0;
