@@ -33,7 +33,7 @@ in {
       unzip
       cliphist
       wl-clip-persist
-      wl-clipboard-rs
+      wl-clipboard
       wofi
       xdg-utils
       btop
