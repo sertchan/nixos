@@ -32,6 +32,8 @@ in {
       qalculate-gtk
       unzip
       cliphist
+      wl-clip-persist
+      wl-clipboard-rs
       wofi
       xdg-utils
       btop
