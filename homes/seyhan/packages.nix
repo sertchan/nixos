@@ -30,6 +30,7 @@ in {
     home.packages = with pkgs; [
       nitch
       qalculate-gtk
+      webcord-vencord
       unzip
       cliphist
       wl-clip-persist
