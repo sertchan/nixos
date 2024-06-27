@@ -177,8 +177,8 @@
         lcdfilter = "default";
       };
       defaultFonts = {
-        serif = [ "Noto Sans" "DejaVu Serif" "Liberation Serif" ];
-        sansSerif = [ "Noto Serif" "DejaVu Sans" "Liberation Sans" ];
+        serif = [ "Noto Serif" "DejaVu Serif" "Liberation Serif" ];
+        sansSerif = [ "Noto Sans" "DejaVu Sans" "Liberation Sans" ];
         monospace = [ "Noto Sans Mono" "DejaVu Sans Mono" "Liberation Mono" ];
       };
     };
