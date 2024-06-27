@@ -14,7 +14,7 @@ in {
         x11.enable = true;
       };
 
-      stateVersion = "24.05";
+      stateVersion = "24.11";
     };
 
     qt = {
