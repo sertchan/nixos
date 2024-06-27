@@ -201,7 +201,7 @@
             ExecStart =
               "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
             Restart = "on-failure";
-            RestartSec = 30;
+            RestartSec = 5;
           };
         };
         wl-clip-persist = {
@@ -212,7 +212,7 @@
             ExecStart =
               "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard both";
             Restart = "on-failure";
-            RestartSec = 30;
+            RestartSec = 5;
           };
         };
         qbittorrent-nox = {
@@ -225,7 +225,7 @@
           serviceConfig = {
             ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
             Restart = "on-failure";
-            RestartSec = 30;
+            RestartSec = 5;
           };
         };
         valiant-room-service = {
@@ -246,7 +246,7 @@
               run_bot
             '';
             Restart = "on-failure";
-            RestartSec = 30;
+            RestartSec = 5;
           };
         };
         polkit-gnome-authentication-agent-1 = {
@@ -266,8 +266,8 @@
         mpris-proxy = {
           enable = true;
           description = "MPRIS Proxy for Bluetooth devices";
-          after = [ "network.target" "sound.target" ];
           wantedBy = [ "default.target" ];
+          after = [ "network.target" "sound.target" ];
           serviceConfig = { ExecStart = "${pkgs.bluez}/bin/mpris-proxy"; };
         };
       };
