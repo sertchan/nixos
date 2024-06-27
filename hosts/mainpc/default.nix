@@ -171,13 +171,15 @@
         lcdfilter = "default";
       };
       defaultFonts = {
-        serif = [ "Times New Roman" ];
-        sansSerif = [ "Arial" ];
-        monospace = [ "Courier New" ];
+        serif = [ "DejaVu Serif" "Liberation Serif" ];
+        sansSerif = [ "DejaVu Sans" "Liberation Sans" ];
+        monospace = [ "DejaVu Sans Mono" "Liberation Mono" ];
       };
     };
     packages = with pkgs; [
       noto-fonts-cjk
+      dejavu_fonts
+      liberation_ttf
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };

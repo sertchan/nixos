@@ -36,8 +36,8 @@ in {
       };
 
       font = {
-        name = "Segoe UI Bold";
-        size = 10;
+        name = "Dejavu Sans Medium";
+        size = 9;
       };
 
       gtk3.extraConfig = {
