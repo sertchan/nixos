@@ -156,10 +156,31 @@
     sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
   };
 
-  fonts.packages = with pkgs; [
-    noto-fonts-cjk
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  ];
+  fonts = {
+    fontconfig = {
+      enable = true;
+      allowBitmaps = true;
+      antialias = true;
+      hinting = {
+        enable = true;
+        autohint = false;
+        style = "slight";
+      };
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default";
+      };
+      defaultFonts = {
+        serif = [ "Times New Roman" ];
+        sansSerif = [ "Arial" ];
+        monospace = [ "Courier New" ];
+      };
+    };
+    packages = with pkgs; [
+      noto-fonts-cjk
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ];
+  };
 
   systemd = {
     services = {
