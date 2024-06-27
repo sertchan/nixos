@@ -45,6 +45,7 @@ in {
       jq
       ffsubsync
       ffmpeg_7-full
+      nixfmt
       just
       p7zip
       mako
@@ -69,15 +70,6 @@ in {
       swww
       pulsemixer
       spotify
-
-      #should be done with devshell
-      gnumake42
-      nodejs_20
-      bun
-      nodePackages_latest.node-gyp
-      python3
-      nixfmt
-      gcc
     ];
   };
 }

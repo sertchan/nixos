@@ -35,30 +35,6 @@
       noCheck = true;
       options = [ "noatime" "nodev" "nosuid" "size=128M" ];
     };
-    "/home/seyhan/.config/obsidian/Cache" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
-    };
-    "/home/seyhan/.config/obsidian/Code Cache" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
-    };
-    "/home/seyhan/.config/obsidian/DawnCache" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
-    };
-    "/home/seyhan/.config/obsidian/GPUCache" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=16M" ];
-    };
   };
 
   networking.useDHCP = lib.mkDefault true;
