@@ -32,9 +32,6 @@ in {
       qalculate-gtk
       webcord-vencord
       unzip
-      cliphist
-      wl-clip-persist
-      wl-clipboard
       wofi
       xdg-utils
       btop

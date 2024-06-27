@@ -192,6 +192,29 @@
     };
     user = {
       services = {
+        cliphist = {
+          enable = true;
+          description = "Clipboard history service";
+          wantedBy = [ "default.target" ];
+          after = [ "graphical-session.target" ];
+          serviceConfig = {
+            ExecStart =
+              "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store";
+            Restart = "on-failure";
+            RestartSec = 30;
+          };
+        };
+        wl-clip-persist = {
+          description = "Persistent clipboard for Wayland";
+          wantedBy = [ "default.target" ];
+          after = [ "graphical-session.target" ];
+          serviceConfig = {
+            ExecStart =
+              "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard both";
+            Restart = "on-failure";
+            RestartSec = 30;
+          };
+        };
         qbittorrent-nox = {
           enable = true;
           description = "Qbittorrent-nox";
@@ -229,7 +252,7 @@
         polkit-gnome-authentication-agent-1 = {
           enable = true;
           description = "Polkit authentication agent for GNOME (graphical)";
-          wantedBy = [ "graphical-session.target" ];
+          wantedBy = [ "default.target" ];
           after = [ "graphical-session.target" ];
           serviceConfig = {
             Type = "simple";
