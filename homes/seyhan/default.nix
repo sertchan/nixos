@@ -37,7 +37,7 @@ in {
 
       font = {
         name = "Noto Sans Medium";
-        size = 9;
+        size = 9.5;
       };
 
       gtk3.extraConfig = {
