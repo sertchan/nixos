@@ -125,6 +125,12 @@
         "ags.cachix.org-1:naAvMrz0CuYqeyGNyLgE010iUiuf/qx6kYrUv3NwAJ8="
       ];
     };
+    gc = {
+      automatic = true;
+      persistent = true;
+      randomizedDelaySec = "30min";
+      dates = "weekly";
+    };
   };
 
   nixpkgs = {
@@ -286,8 +292,6 @@
     };
     nh = {
       enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3";
       package = pkgs.nh;
       flake = "/home/seyhan/.nixos";
     };
