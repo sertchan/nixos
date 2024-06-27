@@ -36,7 +36,7 @@ in {
       };
 
       font = {
-        name = "Dejavu Sans Medium";
+        name = "Noto Sans Medium";
         size = 9;
       };
 

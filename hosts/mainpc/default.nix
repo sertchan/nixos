@@ -171,12 +171,13 @@
         lcdfilter = "default";
       };
       defaultFonts = {
-        serif = [ "DejaVu Serif" "Liberation Serif" ];
-        sansSerif = [ "DejaVu Sans" "Liberation Sans" ];
-        monospace = [ "DejaVu Sans Mono" "Liberation Mono" ];
+        serif = [ "Noto Sans" "DejaVu Serif" "Liberation Serif" ];
+        sansSerif = [ "Noto Serif" "DejaVu Sans" "Liberation Sans" ];
+        monospace = [ "Noto Sans Mono" "DejaVu Sans Mono" "Liberation Mono" ];
       };
     };
     packages = with pkgs; [
+      noto-fonts
       noto-fonts-cjk
       dejavu_fonts
       liberation_ttf
