@@ -29,12 +29,6 @@
       device = "/dev/disk/by-uuid/434E-81A8";
       fsType = "vfat";
     };
-    "/home/seyhan/.cache" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      noCheck = true;
-      options = [ "noatime" "nodev" "nosuid" "size=1024M" ];
-    };
     "/home/seyhan/Pictures/Screenshots" = {
       device = "tmpfs";
       fsType = "tmpfs";
