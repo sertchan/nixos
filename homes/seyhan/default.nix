@@ -37,7 +37,7 @@ in {
 
       font = {
         name = "Segoe UI Bold";
-        size = 9.5;
+        size = 10;
       };
 
       gtk3.extraConfig = {
