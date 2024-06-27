@@ -180,6 +180,7 @@
         serif = [ "Noto Serif" "DejaVu Serif" "Liberation Serif" ];
         sansSerif = [ "Noto Sans" "DejaVu Sans" "Liberation Sans" ];
         monospace = [ "Noto Sans Mono" "DejaVu Sans Mono" "Liberation Mono" ];
+        emoji = [ "Apple Color Emoji" ];
       };
     };
     packages = with pkgs; [
@@ -187,6 +188,7 @@
       noto-fonts-cjk
       dejavu_fonts
       liberation_ttf
+      whatsapp-emoji-font
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };
