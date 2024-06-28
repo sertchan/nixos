@@ -84,7 +84,7 @@
 
   nix = {
     settings =
-      { # ? i acctualy copy pasted raf's this section from raf's configuration. need's to be refactored
+      { # ? i acctualy copy-pasted this section from raf's configuration. need's to be refactored
         use-xdg-base-directories = true;
         flake-registry = "/etc/nix/registry.json";
         min-free = "${toString (5 * 1024 * 1024 * 1024)}";
