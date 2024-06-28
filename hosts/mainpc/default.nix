@@ -247,7 +247,7 @@
           serviceConfig = {
             ExecStart = pkgs.writeShellScript "run-bot" ''
               function run_bot {
-                cd ~/Downloads/shrouded-wary-arrhinceratops || exit
+                cd /home/seyhan/.!SelfHost/valiant-room || exit
                 bun src/index.ts
               }
 
