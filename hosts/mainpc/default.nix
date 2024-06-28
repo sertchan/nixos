@@ -175,6 +175,8 @@
       mtr
     ];
     sessionVariables = {
+      NIXOS_OZONE_WL =
+        "1"; # TODO: remove this after hyprland fixes issue with xwayland apps
       LIBVA_DRIVER_NAME = "iHD"; # ! for hardware video acceleration
     };
   };
