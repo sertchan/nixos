@@ -144,7 +144,7 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [
+    systemPackages = with pkgs; [ # They're mostly monitoring tools
       curl
       wget
       pciutils
@@ -159,31 +159,33 @@
       tcpdump
       mtr
     ];
-    sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+    sessionVariables = {
+      LIBVA_DRIVER_NAME = "iHD"; # ! For Hardare Acceleration
+    };
   };
 
   fonts = {
     fontconfig = {
       enable = true;
       allowBitmaps = true;
-      antialias = true;
+      antialias = true; # ! For better font rendering
       hinting = {
         enable = true;
-        autohint = false;
-        style = "slight";
+        style = "slight"; # Its perfect hinting for almost all cases
       };
       subpixel = {
-        rgba = "rgb";
-        lcdfilter = "default";
+        rgba = "rgb"; # This is not really necessary
+        lcdfilter = "default"; # This is not really necessary either
       };
-      defaultFonts = {
-        serif = [ "Noto Serif" "DejaVu Serif" "Liberation Serif" ];
-        sansSerif = [ "Noto Sans" "DejaVu Sans" "Liberation Sans" ];
-        monospace = [ "Noto Sans Mono" "DejaVu Sans Mono" "Liberation Mono" ];
-        emoji = [ "Apple Color Emoji" ];
-      };
+      defaultFonts =
+        { # Noto Fonts very similar to Seugue UI. My fonts looks pretty much similar to windows
+          serif = [ "Noto Serif" "DejaVu Serif" "Liberation Serif" ];
+          sansSerif = [ "Noto Sans" "DejaVu Sans" "Liberation Sans" ];
+          monospace = [ "Noto Sans Mono" "DejaVu Sans Mono" "Liberation Mono" ];
+          emoji = [ "Apple Color Emoji" ];
+        };
     };
-    packages = with pkgs; [
+    packages = with pkgs; [ # * Fonts that i like to use in my setups
       noto-fonts
       noto-fonts-cjk
       dejavu_fonts
@@ -200,7 +202,22 @@
     };
     user = {
       services = {
+        ##! Critifcal Section ##
+        udiskie = {
+          #! Automounter for removable medias such as usb, phones etc.
+          enable = true;
+          description = "Automounter for removable media";
+          wantedBy = [ "default.target" ];
+          after = [ "graphical-session.target" ];
+          serviceConfig = {
+            ExecStart = "${pkgs.udiskie}/bin/udiskie";
+            Restart = "on-failure";
+            RestartSec = 5;
+          };
+        };
+
         cliphist = {
+          #! Clipboard management for wayland environment 
           enable = true;
           description = "Clipboard history service";
           wantedBy = [ "default.target" ];
@@ -213,6 +230,7 @@
           };
         };
         wl-clip-persist = {
+          #! For making clipboard persistent
           description = "Persistent clipboard for Wayland";
           wantedBy = [ "default.target" ];
           after = [ "graphical-session.target" ];
@@ -223,7 +241,40 @@
             RestartSec = 5;
           };
         };
+
+        polkit-gnome-authentication-agent-1 = {
+          #! Polkit Authentication Agent for such tasks wants root permissions
+          enable = true;
+          description = "Polkit authentication agent of Gnome";
+          wantedBy = [ "default.target" ];
+          after = [ "graphical-session.target" ];
+          serviceConfig = {
+            Type = "simple";
+            ExecStart =
+              "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+            Restart = "on-failure";
+            RestartSec = 5;
+            TimeoutStopSec = 10;
+          };
+        };
+
+        ##  Not Critical Section ##
+        mpris-proxy = {
+          # Media Player Remote Interfacing Specification for Bluetooth devices
+          enable = true;
+          description = "MPRIS Proxy for Bluetooth devices";
+          wantedBy = [ "default.target" ];
+          after = [ "network.target" "sound.target" ];
+          serviceConfig = {
+            ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+            Restart = "on-failure";
+            RestartSec = 5;
+          };
+        };
+
         qbittorrent-nox = {
+          # For Torrent managament, i prefer to use qbittorrent-nox
+          # TODO: Should be done as Home-Manager Service 
           enable = true;
           description = "Qbittorrent-nox";
           wants = [ "network-online.target" ];
@@ -236,7 +287,10 @@
             RestartSec = 5;
           };
         };
+
         valiant-room-service = {
+          # My friend's Discord bot which i want to get rid of him
+          # TODO: Should be done as Home-Manager Service
           enable = true;
           path = with pkgs; [ bash bun ];
           description = "Valiant Dicord Bot";
@@ -257,42 +311,21 @@
             RestartSec = 5;
           };
         };
-        polkit-gnome-authentication-agent-1 = {
-          enable = true;
-          description = "Polkit authentication agent for GNOME (graphical)";
-          wantedBy = [ "default.target" ];
-          after = [ "graphical-session.target" ];
-          serviceConfig = {
-            Type = "simple";
-            ExecStart =
-              "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-            Restart = "on-failure";
-            RestartSec = 1;
-            TimeoutStopSec = 10;
-          };
-        };
-        mpris-proxy = {
-          enable = true;
-          description = "MPRIS Proxy for Bluetooth devices";
-          wantedBy = [ "default.target" ];
-          after = [ "network.target" "sound.target" ];
-          serviceConfig = { ExecStart = "${pkgs.bluez}/bin/mpris-proxy"; };
-        };
       };
     };
   };
 
-  sound.enable = true;
+  sound.enable = true; # ! Enable sound
 
   programs = {
-    hyprland.enable = true;
-    zsh = {
+    hyprland.enable = true; # ! Enable hyprland window manager
+    zsh = { # * I prefer to use zsh as my shell
       enable = true;
       ohMyZsh.enable = true;
-      histSize = 10000;
+      histSize = 10000; # Can be reduced
       autosuggestions.enable = true;
     };
-    nh = {
+    nh = { # ! Use nixhelper, it really helps while building new nix generations
       enable = true;
       package = pkgs.nh;
       flake = "/home/seyhan/.nixos";
@@ -301,21 +334,22 @@
 
   services = {
     gvfs.enable = true;
-    resolved = {
-      enable = true;
-      dnssec = "true";
-      domains = [ "~." ];
-      fallbackDns = [ "94.140.14.140" "94.140.14.141" ];
-      dnsovertls = "true";
-    };
-    pipewire = {
+    resolved =
+      { # ! Use resolved project for dns, DO NOT touch unless you need to change dns
+        enable = true;
+        dnssec = "true";
+        domains = [ "~." ];
+        fallbackDns = [ "94.140.14.140" "94.140.14.141" ];
+        dnsovertls = "true";
+      };
+    pipewire = { # ! Use Pipewire project for sound management
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
       wireplumber.enable = true;
     };
-    tlp = {
+    tlp = { # * Use TLP for better power consumption
       enable = true;
       settings = {
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
@@ -326,5 +360,6 @@
     };
   };
 
-  system.stateVersion = "24.11";
+  system.stateVersion =
+    "24.11"; # !! DONT CHANGE IT UNLESS YOU KNOW WHAT YOU'RE DOING
 }

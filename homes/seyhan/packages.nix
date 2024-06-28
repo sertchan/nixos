@@ -58,7 +58,6 @@ in {
       imagemagick
       grimblast
       qbittorrent-nox
-      udiskie
       waifu2x-converter-cpp
       xdotool
       yamlfix
