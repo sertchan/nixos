@@ -199,7 +199,6 @@
     services = {
       systemd-networkd.stopIfChanged = false;
       systemd-resolved.stopIfChanged = false;
-      NetworkManager-wait-online.enable = false;
     };
     user = {
       services = {
