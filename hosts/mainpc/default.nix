@@ -5,7 +5,7 @@
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      timeout = 0;
+      timeout = 1;
     };
     kernelPackages = pkgs.linuxPackages_latest;
   };
@@ -199,6 +199,7 @@
     services = {
       systemd-networkd.stopIfChanged = false;
       systemd-resolved.stopIfChanged = false;
+      NetworkManager-wait-online.enable = false;
     };
     user = {
       services = {
@@ -334,6 +335,18 @@
 
   services = {
     gvfs.enable = true;
+
+    greetd = { # ! Use greetd for auto launching Hyprland
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/hyprland";
+          user = "seyhan";
+        };
+        default_session = initial_session;
+      };
+    };
+
     resolved =
       { # ! Use resolved project for dns, DO NOT touch unless you need to change dns
         enable = true;
@@ -342,6 +355,7 @@
         fallbackDns = [ "94.140.14.140" "94.140.14.141" ];
         dnsovertls = "true";
       };
+
     pipewire = { # ! Use Pipewire project for sound management
       enable = true;
       alsa.enable = true;
@@ -349,6 +363,7 @@
       pulse.enable = true;
       wireplumber.enable = true;
     };
+
     tlp = { # * Use TLP for better power consumption
       enable = true;
       settings = {
