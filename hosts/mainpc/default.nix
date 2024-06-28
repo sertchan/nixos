@@ -8,6 +8,8 @@
       systemd-boot.enable = true; # ! use systemd-boot instead of grub
       efi.canTouchEfiVariables =
         true; # ? i'm not sure if this is really necessary
+      timeout =
+        null; # ! spam bottom arrow key if you want to change to older generation
     };
     kernelPackages =
       pkgs.linuxPackages_latest; # ! use latest linux package avaliable in the repo
@@ -212,21 +214,19 @@
   systemd = {
     extraConfig = # ! important for fast shutdowns
       ''
-        DefaultTimeoutStopSec=2s
+        DefaultTimeoutStopSec=5s
       '';
 
     services = {
-      systemd-networkd.stopIfChanged =
-        false; # ? i'm not sure this is makes difference
-      systemd-resolved.stopIfChanged =
-        false; # ? i'm not sure this is makes difference either
+      systemd-networkd.stopIfChanged = false; # ? copy-paste from raf's config
+      systemd-resolved.stopIfChanged = false; # ? copy-paste from raf's config
     };
 
     user = {
       services = {
         ###! critifcal section ###
         udiskie = {
-          #! automounter for removable medias such as usb, phones etc.
+          #! automounter for removable medias such as usb, phones etc
           enable = true;
           description = "Automounter for removable media";
           wantedBy = [ "default.target" ];
