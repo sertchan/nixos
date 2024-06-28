@@ -1,6 +1,6 @@
 # ######################################################### TODO: THIS ALL CONFIG NEEDS TO BE MODULARIZED #########################################################
 
-{ config, lib, inputs, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   imports = [ ./system.nix ];
 
   boot = {
@@ -340,11 +340,7 @@
   sound.enable = true;
 
   programs = {
-    hyprland = {
-      enable = true;
-      package =
-        inputs.hyprland.packages.${pkgs.system}.hyprland; # TODO: don't forget the change hyprland version after clipboard fix
-    };
+    hyprland = { enable = true; };
     zsh = { # i prefer to use zsh as my shell
       enable = true;
       ohMyZsh.enable = true; # TODO: create a nix ohmyzsh configuration

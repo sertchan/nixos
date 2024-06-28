@@ -1,8 +1,8 @@
 {
   description = "seyhan";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hyprland.url = "github:hyprwm/hyprland/v0.39.1";
+    nixpkgs.url =
+      "github:NixOS/nixpkgs/cc046e57bcc8a70a49a965a1cb808f82a425b64a";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
