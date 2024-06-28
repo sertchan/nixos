@@ -1,6 +1,6 @@
 # ######################################################### TODO: THIS ALL CONFIG NEEDS TO BE MODULARIZED #########################################################
 
-{ config, lib, pkgs, ... }: {
+{ config, lib, inputs, pkgs, ... }: {
   imports = [ ./system.nix ];
 
   boot = {
@@ -175,8 +175,6 @@
       mtr
     ];
     sessionVariables = {
-      NIXOS_OZONE_WL =
-        "1"; # TODO: remove this after hyprland fixes issue with xwayland apps
       LIBVA_DRIVER_NAME = "iHD"; # ! for hardware video acceleration
     };
   };
@@ -342,7 +340,10 @@
   sound.enable = true;
 
   programs = {
-    hyprland.enable = true; # ! it's neccesarry for using hyprland
+    hyprland = { # ! it's neccesarry for using hyprland
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    };
     zsh = { # i prefer to use zsh as my shell
       enable = true;
       ohMyZsh.enable = true; # TODO: create a nix ohmyzsh configuration
