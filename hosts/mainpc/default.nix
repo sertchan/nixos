@@ -340,9 +340,10 @@
   sound.enable = true;
 
   programs = {
-    hyprland = { # ! it's neccesarry for using hyprland
+    hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      package =
+        inputs.hyprland.packages.${pkgs.system}.hyprland; # TODO: don't forget the change hyprland version after clipboard fix
     };
     zsh = { # i prefer to use zsh as my shell
       enable = true;
