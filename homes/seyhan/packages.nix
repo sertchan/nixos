@@ -17,7 +17,6 @@ in {
           taplo
           rustfmt
           prettierd
-          yamlfix
           alejandra
           nixfmt
           nixpkgs-fmt
@@ -60,7 +59,6 @@ in {
       qbittorrent-nox
       waifu2x-converter-cpp
       xdotool
-      yamlfix
       zip
       obsidian
       alacritty
