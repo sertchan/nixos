@@ -210,12 +210,18 @@
   };
 
   systemd = {
+    extraConfig = # ! important for fast shutdowns
+      ''
+        DefaultTimeoutStopSec=2s
+      '';
+
     services = {
       systemd-networkd.stopIfChanged =
         false; # ? i'm not sure this is makes difference
       systemd-resolved.stopIfChanged =
         false; # ? i'm not sure this is makes difference either
     };
+
     user = {
       services = {
         ###! critifcal section ###
