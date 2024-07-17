@@ -22,11 +22,11 @@
   zramSwap.enable = true;
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/7e1a04ef-003f-4d92-af0a-4c6d381b51d0";
+      device = "/dev/disk/by-label/NIXROOT";
       fsType = "ext4";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/434E-81A8";
+      device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
     };
     "/home/seyhan/Pictures/Screenshots" = {
